@@ -1,6 +1,6 @@
 package Vista;
 
-import Dao.UsuarioDAO;
+import Service.UsuarioService;
 import Modelo.Usuario;
 
 import javax.swing.*;
@@ -61,8 +61,8 @@ private JComboBox<String> cboRol;
             u.setRol((String) cboRol.getSelectedItem());
             u.setClave(new String(txtClave.getPassword()));
 
-            UsuarioDAO dao = new UsuarioDAO();
-            if (dao.insertar(u)) {
+            UsuarioService service = new UsuarioService();
+            if (service.registrar(u)) {
                 JOptionPane.showMessageDialog(null, "Usuario registrado con éxito.");
                 dispose(); // Cierra la ventana
             } else {
